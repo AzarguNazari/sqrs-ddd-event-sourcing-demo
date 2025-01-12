@@ -1,4 +1,4 @@
-package org.example.eventsourcingapp;
+package org.example.eventsourcingapp.student;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class StudentController {
 
     @PostMapping
     public ResponseEntity<Student> createStudent(@RequestBody StudentRequest request) {
-        Student student = studentService.createStudent(request.getName(), request.getDateOfBirth());
+        Student student = studentService.createStudent(request.name(), request.dateOfBirth());
         return ResponseEntity.ok(student);
     }
 
@@ -28,7 +28,7 @@ public class StudentController {
     public ResponseEntity<Student> updateStudent(
         @PathVariable String studentId,
         @RequestBody StudentRequest request) {
-        Student student = studentService.updateStudent(studentId, request.getName(), request.getDateOfBirth());
+        Student student = studentService.updateStudent(studentId, request.name(), request.dateOfBirth());
         return ResponseEntity.ok(student);
     }
 

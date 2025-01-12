@@ -1,4 +1,4 @@
-package org.example.eventsourcingapp;
+package org.example.eventsourcingapp.student;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,20 +19,12 @@ import lombok.Setter;
 @NoArgsConstructor
 public class StudentEvent {
     @Id
-    @Column(name = "event_id")
     private String eventId = UUID.randomUUID().toString();
-
-    @Column(name = "student_id")
     private String studentId;
-
-    @Column(name = "event_type")
     @Enumerated(EnumType.STRING)
     private StudentEventType eventType;
-
-    @Column(name = "event_data", columnDefinition = "jsonb")
+    @Column(columnDefinition = "jsonb")
     private String eventData;
-
     private LocalDateTime timestamp = LocalDateTime.now();
-
     private Long version;
 }

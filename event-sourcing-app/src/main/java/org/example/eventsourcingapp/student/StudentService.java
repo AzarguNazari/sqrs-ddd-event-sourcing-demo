@@ -1,4 +1,4 @@
-package org.example.eventsourcingapp;
+package org.example.eventsourcingapp.student;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 @Transactional
 @RequiredArgsConstructor
 public class StudentService {
+
     private final StudentRepository studentRepository;
     private final StudentEventRepository eventRepository;
     private final ObjectMapper objectMapper;
@@ -88,6 +89,6 @@ public class StudentService {
     }
 
     public List<StudentEvent> getStudentHistory(String studentId) {
-        return eventRepository.findByStudentIdOrderByTimestampAsc(studentId);
+        return eventRepository.findAllByStudentIdOrderByTimestampAsc(studentId);
     }
 }
